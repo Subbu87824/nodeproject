@@ -14,10 +14,14 @@ pipeline {
                 }
             }
         }
-        stage("Build") {
+       stage('Build') {
             steps {
-                // Use 'bat' for running commands in Windows
-                bat 'npm run build'
+                script {
+                    // Install dependencies
+                    bat 'npm install'
+                    // Build the application
+                    bat 'npm run build'
+                }
             }
         }
         stage('Deploy') {
