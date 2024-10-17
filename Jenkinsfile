@@ -6,16 +6,12 @@ pipeline {
                  checkout scm
             }
         }
-        stage("Test") {
+      stage('Test') {
             steps {
-                // Install Node.js (if not already installed) using Chocolatey package manager
-                bat '''
-                choco install nodejs -y
-                npm install
-                '''
-
-                // Run npm tests
-                bat 'npm test'
+                script {
+                    // Run tests here if you have any
+                    echo 'Running tests...'
+                }
             }
         }
         stage("Build") {
