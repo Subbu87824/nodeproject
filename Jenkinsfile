@@ -14,16 +14,16 @@ pipeline {
                 }
             }
         }
-      stage('Build') {
+      stages {
+        stage('Install Dependencies') {
             steps {
                 script {
-                    // Install dependencies
+                    // Ensure Node.js is installed on the system and is in the PATH
                     bat 'npm install'
-                    // Build the application
-                    bat 'npm run build'
                 }
             }
         }
+    }
         stage('Deploy') {
             steps {
                 script {
