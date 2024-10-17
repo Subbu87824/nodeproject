@@ -14,7 +14,7 @@ pipeline {
                 }
             }
         }
-       stage('Build') {
+      stage('Build') {
             steps {
                 script {
                     // Install dependencies
