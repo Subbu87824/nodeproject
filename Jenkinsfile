@@ -1,13 +1,9 @@
 pipeline {
     agent any 
-
-    stages {
-        stage('Build') {
-            steps {
-                script {
-                    // Build your Docker image
-                    bat 'docker build -t my-nodejs-app .'
-                }
+    stages{
+        stage("checkout"){
+            steps{
+                 checkout scm
             }
         }
         stage('Test') {
@@ -15,6 +11,16 @@ pipeline {
                 script {
                     // Run tests here if you have any
                     echo 'Running tests...'
+                }
+            }
+        }
+      stage('Build') {
+            steps {
+                script {
+                    // Install dependencies
+                    bat 'npm install'
+                    // Build the application
+                    bat 'npm run build'
                 }
             }
         }
@@ -26,5 +32,11 @@ pipeline {
                 }
             }
         }
+        stage('Build Docker Image') {
+            steps {
+                bat 'docker build -t my-node-app:1.0 .'
+            }
+        }
+
     }
 }
