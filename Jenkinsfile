@@ -15,12 +15,10 @@ pipeline {
             }
         }
        stages {
-        stage('Build') {
+       stage("Build") {
             steps {
-                script {
-                    // Build your Docker image
-                    bat 'docker build -t my-nodejs-app .'
-                }
+                // Use 'bat' for running commands in Windows
+                bat 'npm run build'
             }
         }
         stage('Deploy') {
