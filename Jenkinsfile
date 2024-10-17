@@ -14,7 +14,6 @@ pipeline {
                 }
             }
         }
-       stages {
        stage("Build") {
             steps {
                 // Use 'bat' for running commands in Windows
